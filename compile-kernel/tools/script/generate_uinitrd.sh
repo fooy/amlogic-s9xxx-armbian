@@ -25,9 +25,9 @@ WARNING="[${yellow_font_prefix}WARNING${font_color_suffix}]"
 ERROR="[${red_font_prefix}ERROR${font_color_suffix}]"
 #===== Do not modify the following parameter settings, End =======
 
-echo -e "${INFO} Current system: ${chroot_arch_info}"
-echo -e "${INFO} Current path: ${chroot_make_path}"
-echo -e "${INFO} Kernel version: ${chroot_kernel_version}"
+echo -e "${INFO} Current system: [ ${chroot_arch_info} ]"
+echo -e "${INFO} Current path: [ ${chroot_make_path} ]"
+echo -e "${INFO} Compile the kernel version: [ ${chroot_kernel_version} ]"
 
 # Environment initialization
 chroot_env_init() {
@@ -41,7 +41,7 @@ chroot_env_init() {
 chroot_generate_uinitrd() {
     cd /boot
     echo -e "${STEPS} Generate uInitrd file."
-    #echo -e "${INFO} File status in the /boot directory before the update: \n$(ls -l /boot) \n"
+    echo -e "${INFO} File status in the /boot directory before the update: \n$(ls -l .) \n"
 
     # Backup the original uInitrd file
     [ -f uInitrd ] && mv -f uInitrd uInitrd.bak 2>/dev/null
@@ -49,7 +49,7 @@ chroot_generate_uinitrd() {
 
     # Generate uInitrd file directly under armbian system
     update-initramfs -c -k ${chroot_kernel_version} 2>/dev/null
-    #echo -e "${INFO} File situation in the aa directory after update: \n$(ls -l /boot) \n"
+    echo -e "${INFO} File situation in the aa directory after update: \n$(ls -l .) \n"
 
     if [ -f uInitrd ]; then
         echo -e "${SUCCESS} The uInitrd file is Successfully generated."

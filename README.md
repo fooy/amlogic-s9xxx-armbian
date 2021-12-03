@@ -146,14 +146,16 @@ Command: Enter [ vi /etc/fstab ]
 - ### Local build instructions
 
 1. Install the necessary packages (E.g Ubuntu 20.04 LTS user)
+
 ```yaml
 sudo apt-get update -y
 sudo apt-get full-upgrade -y
 sudo apt-get install -y $(curl -fsSL git.io/ubuntu-2004-server)
 ```
+
 2. Clone the repository to the local. `git clone --depth 1 https://github.com/ophub/amlogic-s9xxx-armbian.git`
 
-3. Create the `build/output/images` folder, and upload the Armbian image ( Eg: `Armbian_21.11.0-trunk_Lepotato_buster_current_5.10.80.img` ) to this `~/amlogic-s9xxx-armbian/build/output/images` directory. Please keep the release version number (e.g. `21.11.0`) and kernel version number (e.g. `5.10.80`) in the name of the original Armbian image file, and will be used as substitution parameters when naming the output firmware during reconstruction.
+3. Create the `build/output/images` folder, and upload the Armbian image ( Eg: `Armbian_21.11.0-trunk_Lepotato_buster_current_5.10.80.img` ) to this `~/amlogic-s9xxx-armbian/build/output/images` directory. Please keep the release version number (e.g. `21.11.0`) and kernel version number (e.g. `5.10.80`) in the name of the original Armbian image file, It will be used as the name of the armbian firmware after rebuilding.
 
 4. Enter the `~/amlogic-s9xxx-armbian` root directory. And run Eg: `sudo ./rebuild -d -b s905x3 -k 5.4.160` to build armbian for `amlogic s9xxx`. The generated Armbian image is in the `build/output/images` directory under the root directory.
 
@@ -187,7 +189,7 @@ You can use other methods to build the Armbian system, or use the general versio
 | version_branch         | stable                 | Specify the name of the kernel [version branch](https://github.com/ophub/kernel/tree/main/pub), Such as `stable`. The specified name must be the same as the branch directory name. The `stable` branch version is used by default. |
 | armbian_kernel         | 5.10.80_5.4.160        | Set the kernel version，The [kernel](https://github.com/ophub/kernel/tree/main/pub/stable) library contains many original kernels of `Flippy`, you can view and choose to specify. |
 | auto_kernel            | true                   | Set whether to automatically adopt the latest version of the kernel of the same series. When it is `true`, it will automatically find in the kernel library whether there is an updated version of the kernel specified in `amlogic_kernel`. such as 5.4.160 version. If there is the latest version of 5.4 same series, it will automatically Replace with the latest version. When set to `false`, the specified version of the kernel will be compiled. Default value: `true` |
-| armbian_size           | 2748                   | Set the size of the firmware ROOTFS partition |
+| armbian_size           | 2748                   | Set the size of the firmware ROOTFS partition. |
 
 - GitHub Action Output variable description
 

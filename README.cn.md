@@ -155,7 +155,7 @@ sudo apt-get install -y $(curl -fsSL git.io/ubuntu-2004-server)
 
 2. 克隆仓库到本地 `git clone --depth 1 https://github.com/ophub/amlogic-s9xxx-armbian.git`
 
-3. 在根目录下创建文件夹 `build/output/images` ，并上传 Armbian 镜像文件 ( 如：`Armbian_21.11.0-trunk_Lepotato_buster_current_5.10.80.img` ) 到 `~/amlogic-s9xxx-armbian/build/output/images` 目录里。原版 Armbian 镜像文件名称中的发行版本号（如：`21.11.0`）和内核版本号（如：`5.10.80`）请保留，重构时将作为输出固件命名时的代入参数使用。
+3. 在根目录下创建文件夹 `build/output/images` ，并上传 Armbian 镜像文件 ( 如：`Armbian_21.11.0-trunk_Lepotato_buster_current_5.10.80.img` ) 到 `~/amlogic-s9xxx-armbian/build/output/images` 目录里。原版 Armbian 镜像文件名称中的发行版本号（如：`21.11.0`）和内核版本号（如：`5.10.80`）请保留，它将在重构后用作 Armbian 固件的名称。
 
 4. 进入 `~/amlogic-s9xxx-armbian` 根目录，然后运行 `sudo ./rebuild -d -b s905x3 -k 5.4.160` 命令即可生成指定 soc 的 Armbian 镜像文件。生成的文件保存在 `build/output/images` 目录里。
 
@@ -189,7 +189,7 @@ sudo apt-get install -y $(curl -fsSL git.io/ubuntu-2004-server)
 | version_branch         | stable                 | 指定内核 [版本分支](https://github.com/ophub/kernel/tree/main/pub) 名称，如 `stable` 。指定的名称须与分支目录名称相同。默认使用 `stable` 分支版本。 |
 | armbian_kernel         | 5.10.80_5.4.160        | 设置内核版本，[kernel](https://github.com/ophub/kernel/tree/main/pub/stable) 库里收藏了众多 Flippy 的原版内核，可以查看并选择指定。 |
 | auto_kernel            | true                   | 设置是否自动采用同系列最新版本内核。当为 `true` 时，将自动在内核库中查找在 `amlogic_kernel` 中指定的内核如 5.4.160 的 5.4 同系列是否有更新的版本，如有 5.4.160 之后的最新版本时，将自动更换为最新版。设置为 `false` 时将编译指定版本内核。默认值：`true` |
-| armbian_size           | 2748                   | 设置固件 ROOTFS 分区的大小                         |
+| armbian_size           | 2748                   | 设置固件 ROOTFS 分区的大小。                         |
 
 - GitHub Action 输出变量说明
 
@@ -201,7 +201,7 @@ sudo apt-get install -y $(curl -fsSL git.io/ubuntu-2004-server)
 
 ## 编译自定义内核
 
-自定义内核的编译方法详见 [compile-kernel](compile-kernel)
+自定义内核的编译方法详见 [compile-kernel](compile-kernel/README.cn.md)
 
 ## Armbian 贡献者名单
 
