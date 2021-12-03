@@ -169,7 +169,7 @@ sudo apt-get install -y $(curl -fsSL git.io/ubuntu-2004-server)
 
 - ### 仅单独引入 GitHub Action 进行 Armbian 重构
 
-你可以使用其他方式构建 Armbian 系统，或者使用 Armbian 官方提供的通用版固件，仅在流程控制文件 .github/workflows/.yml 中引入本仓库的脚本进行 Armbian 重构，适配 Amlogic S9xxx 系列盒子的使用，代码如下:
+你可以使用其他方式构建 Armbian 固件。或者使用 [Armbian](https://armbian.tnahosting.net/dl/) 官方提供的 [lepotato](https://armbian.tnahosting.net/dl/lepotato/archive/) 等分支的固件，仅在流程控制文件 .github/workflows/.yml 中引入本仓库的脚本进行 Armbian 重构，适配 Amlogic S9xxx 系列盒子的使用，代码如下:
 
 ```yaml
 - name: Rebuild Armbian for Amlogic s9xxx
@@ -184,7 +184,7 @@ sudo apt-get install -y $(curl -fsSL git.io/ubuntu-2004-server)
 
 | 参数                   | 默认值                  | 说明                                            |
 |------------------------|------------------------|------------------------------------------------|
-| armbian_path         | no                     | 设置原版 Armbian 文件的路径，支持使用当前工作流中的文件路径如 `build/output/images/*.img` ，也支持使用网络下载地址如： `https://github.com/*/releases/*/*/Armbian_21.11.0-*_buster_*_5.10.83.img.gz` |
+| armbian_path         | no                     | 设置原版 Armbian 文件的路径，支持使用当前工作流中的文件路径如 `build/output/images/*.img` ，也支持使用网络下载地址如： `https://dl.armbian.com/*/Armbian_*_buster_*.img.xz` |
 | armbian_soc        | s905d_s905x3           | 设置打包盒子的 `SOC` ，可指定单个盒子如 `s905x3` ，可选择多个盒子用_连接如 `s905x3_s905d` 。各盒子的SoC代码为：`s905x3`, `s905x2`, `s905x`, `s905w`, `s905d`, `s922x`, `s922x-n2`, `s912`。说明：`s922x-n2` 是 `s922x-odroid-n2` |
 | version_branch         | stable                 | 指定内核 [版本分支](https://github.com/ophub/kernel/tree/main/pub) 名称，如 `stable` 。指定的名称须与分支目录名称相同。默认使用 `stable` 分支版本。 |
 | armbian_kernel         | 5.10.80_5.4.160        | 设置内核版本，[kernel](https://github.com/ophub/kernel/tree/main/pub/stable) 库里收藏了众多 Flippy 的原版内核，可以查看并选择指定。 |

@@ -169,7 +169,7 @@ sudo apt-get install -y $(curl -fsSL git.io/ubuntu-2004-server)
 
 - ### Only import GitHub Action for Armbian rebuild
 
-You can use other methods to build the Armbian system, or use the general version of the firmware officially provided by Armbian, and only import the Action from this repository in the process control file .github/workflows/.yml to rebuild Armbian to adapt to the use of Amlogic S9xxx series boxes, code show as below:
+You can use other methods to build the Armbian system. Or use [Armbian](https://armbian.tnahosting.net/dl/) officially provided [lepotato](https://armbian.tnahosting.net/dl/lepotato/archive/) and other branch firmware. and only import the Action from this repository in the process control file .github/workflows/.yml to rebuild Armbian to adapt to the use of Amlogic S9xxx series boxes, code show as below:
 
 ```yaml
 - name: Rebuild Armbian for Amlogic s9xxx
@@ -184,7 +184,7 @@ You can use other methods to build the Armbian system, or use the general versio
 
 | parameter              | Defaults               | Description                                                   |
 |------------------------|------------------------|---------------------------------------------------------------|
-| armbian_path         | no                     | Set the path of the original Armbian file, support the file path in the current workflow such as `build/output/images/*.img`, and also support the use of the network download address such as: `https://github.com/*/releases/ */*/Armbian_21.11.0-*_buster_*_5.10.83.img.gz` |
+| armbian_path         | no                     | Set the path of the original Armbian file, support the file path in the current workflow such as `build/output/images/*.img`, and also support the use of the network download address such as: `https://dl.armbian.com/*/Armbian_*_buster_*.img.xz` |
 | armbian_soc        | s905d_s905x3           | Set the `SoC` of the packaging box, you can specify a single box such as `s905x3`, you can choose multiple boxes to use `_` connection such as `s905x3_s905d` . SOC code of each box is: `s905x3`, `s905x2`, `s905x`, `s905w`, `s905d`, `s922x`, `s922x-n2`, `s912`. Note: `s922x-n2` is `s922x-odroid-n2` |
 | version_branch         | stable                 | Specify the name of the kernel [version branch](https://github.com/ophub/kernel/tree/main/pub), Such as `stable`. The specified name must be the same as the branch directory name. The `stable` branch version is used by default. |
 | armbian_kernel         | 5.10.80_5.4.160        | Set the kernel version，The [kernel](https://github.com/ophub/kernel/tree/main/pub/stable) library contains many original kernels of `Flippy`, you can view and choose to specify. |
