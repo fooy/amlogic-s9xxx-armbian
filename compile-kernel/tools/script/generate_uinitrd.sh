@@ -41,7 +41,7 @@ chroot_env_init() {
 chroot_generate_uinitrd() {
     cd /boot
     echo -e "${STEPS} Generate uInitrd file."
-    echo -e "${INFO} File status in the /boot directory before the update: \n$(ls -l .) \n"
+    #echo -e "${INFO} File status in the /boot directory before the update: \n$(ls -l .) \n"
 
     # Backup the original uInitrd file
     [ -f uInitrd ] && mv -f uInitrd uInitrd.bak 2>/dev/null
@@ -49,7 +49,6 @@ chroot_generate_uinitrd() {
 
     # Generate uInitrd file directly under armbian system
     update-initramfs -c -k ${chroot_kernel_version} 2>/dev/null
-    echo -e "${INFO} File situation in the aa directory after update: \n$(ls -l .) \n"
 
     if [ -f uInitrd ]; then
         echo -e "${SUCCESS} The uInitrd file is Successfully generated."
@@ -57,6 +56,8 @@ chroot_generate_uinitrd() {
     else
         echo -e "${WARNING} The uInitrd file not updated."
     fi
+
+    echo -e "${INFO} File situation in the aa directory after update: \n$(ls -l *${chroot_kernel_version}) \n"
 
     # Restore the original uInitrd
     [ -f uInitrd.bak ] && mv -f uInitrd.bak uInitrd 2>/dev/null
