@@ -19,7 +19,7 @@ arch_info=$(arch)
 auto_kernel="true"
 
 # Kernel download address and custom name
-build_kernel=("5.4.160" "5.10.80")
+build_kernel=("5.4.160" "5.15.10")
 custom_name="-meson64-beta"
 kernel_org_repo="https://cdn.kernel.org/pub/linux/kernel/v5.x/"
 kernel_flippy_repo="unifreq"

@@ -9,7 +9,7 @@ Compile a custom kernel as needed. This kernel can be used in [Armbian](https://
 | Parameter | Meaning | Description |
 | ---- | ---- | ---- |
 | -d | Defaults | Compile all kernels with default configuration. |
-| -k | Kernel | Specify [kernel](https://cdn.kernel.org/pub/linux/kernel/v5.x/) name, such as `-k 5.4.160`. Multiple kernels use `_` to connect, such as `- k 5.10.80_5.4.160` |
+| -k | Kernel | Specify [kernel](https://cdn.kernel.org/pub/linux/kernel/v5.x/) name, such as `-k 5.4.160`. Multiple kernels use `_` to connect, such as `- k 5.15.10_5.4.160` |
 | -a | AutoKernel | Set whether to automatically adopt the latest version of the kernel of the same series. When it is `true`, it will automatically find whether there is a newer version of the kernel specified in `-k` such as `5.4.160` of the `5.4` series. If there is the latest version after `5.4.160`, it will be automatically replaced with the latest version . When set to `false`, the specified version of the kernel will be compiled. Default value: `true` |
 | -n | CustomName | Set the kernel custom signature. The default value is `-meson64-beta` and the generated kernel is `5.4.160-meson64-beta`. Do not include spaces when setting a custom signature. |
 | -r | Repo | Specify the download site of the kernel compilation source code. The available options are [kernel.org](https://www.kernel.org/) and [flippy](https://github.com/unifreq), the default is `flippy` |
@@ -18,7 +18,7 @@ Compile a custom kernel as needed. This kernel can be used in [Armbian](https://
 - `sudo ./recompile -d -k 5.4.160 -a true`: Use the default configuration, and use the `-a` parameter to set whether to automatically upgrade to the latest kernel of the same series when compiling the kernel.
 - `sudo ./recompile -d -k 5.4.160 -n leifeng`: Use the default configuration, and use the `-n` parameter to set the kernel custom signature.
 - `sudo ./recompile -d -k 5.4.160 -r kernel.org`: Use the default configuration, and use the `-r` parameter to set the download station of the compiled source code.
-- `sudo ./recompile -d -k 5.10.80_5.4.160 -a true -n leifeng -r kernel.org`: Use the default configuration, and set through multiple parameters.
+- `sudo ./recompile -d -k 5.15.10_5.4.160 -a true -n leifeng -r kernel.org`: Use the default configuration, and set through multiple parameters.
 
 💡Tip: You can use the [.config](https://github.com/unifreq/arm64-kernel-configs) template and source code of `flippy` to compile the `latest version` of [5.4](https://github.com/unifreq/linux-5.4.y) / [5.10](https://github.com/unifreq/linux-5.10.y) / [5.12](https://github.com/unifreq/linux-5.12.y) / [5.13](https://github.com/unifreq/linux-5.13.y) / [5.14](https://github.com/unifreq/linux-5.14.y) / [5.15](https://github.com/unifreq/linux-5.15.y). `Other series or historical versions` can be compiled with [kernel.org](https://cdn.kernel.org/pub/linux/kernel/v5.x/).
 
