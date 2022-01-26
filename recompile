@@ -249,7 +249,7 @@ make_kernel() {
     echo -e "${STEPS} Set cross compilation parameters."
     export ARCH="arm64"
     export LOCALVERSION="${custom_name}"
-    export PATH=${PATH}:${toolchain_dir}/${clang_file//.tar.xz/}/bin
+    export PATH=${PATH}:${toolchain_dir}/${gcc_file//.tar.xz/}/bin:${toolchain_dir}/${clang_file//.tar.xz/}/bin
     export CROSS_COMPILE=${toolchain_dir}/${gcc_file//.tar.xz/}/bin/aarch64-none-linux-gnu-
     export CLANG_TRIPLE=${toolchain_dir}/${clang_file//.tar.xz/}/bin
     export CC=${toolchain_dir}/${clang_file//.tar.xz/}/bin/clang
@@ -263,6 +263,7 @@ make_kernel() {
     echo "PATH=${PATH}:${toolchain_dir}/${gcc_file//.tar.xz/}/bin" >>~/.bashrc && sync
     source ~/.bashrc
     #
+    scripts/config -e LTO_CLANG_THIN
     MAKE_SET_STRING=" ARCH=${ARCH} CROSS_COMPILE=${CROSS_COMPILE} CLANG_TRIPLE=${CLANG_TRIPLE} CC=${CC} LD=${LD} LLVM=1 LLVM_IAS=1 LOCALVERSION=${LOCALVERSION} "
 
     # Make clean/mrproper
